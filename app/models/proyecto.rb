@@ -4,6 +4,6 @@ class Proyecto < ApplicationRecord
     validates :state, presence: true, allow_blank: false
 
     def self.search(search)
-        where("state LIKE ?", "%#{search}%")
+        where("state iLIKE ?", "%#{search}%")
     end
 end
