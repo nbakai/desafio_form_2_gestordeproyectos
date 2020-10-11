@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Dashboard</h1>
-
+<form >
+        <%= form_tag(proyectos_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Filtrar estado (propuesta, en progreso o terminado)", style:' width:300px'; %>
+        <button type="submit">Buscar</button>
+        <% end %>
+</form>
 <table>
   <thead>
     <tr>

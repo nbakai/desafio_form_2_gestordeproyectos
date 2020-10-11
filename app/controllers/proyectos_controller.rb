@@ -1,10 +1,15 @@
 class ProyectosController < ApplicationController
   before_action :set_proyecto, only: [:show, :edit, :update, :destroy]
-
+  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  http_basic_authenticate_with name: "desafiovamoscontodo", password: "XAHTJEAS23123%23", only: :index
   # GET /proyectos
   # GET /proyectos.json
   def index
-    @proyectos = Proyecto.all
+    if params[:search]
+      @proyectos = Proyecto.search(params[:search])
+    else
+      @proyectos = Proyecto.all
+    end
   end
 
   # GET /proyectos/1
